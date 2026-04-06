@@ -1,1 +1,359 @@
-# Sweet-Palate-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Palate - ¡El mejor sabor al mejor precio!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+        }
+        header {
+            background: #d63031;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: ##e6c8d1;
+        }
+        .cart-btn {
+            background: #b4cdde;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        main {
+            margin-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            color: #c5d8e8;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        .btn {
+            background: ;#b4cdde
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,184,148,0.3);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product h3 {
+            color: #d63031;
+            margin-bottom: 0.5rem;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00b894;
+            margin: 1rem 0;
+        }
+        .about {
+            background: rgba(255,255,255,0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .contact {
+            background: rgba(255,255,255,0.9);
+            padding: 3rem;
+            border-radius: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .cart {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 350px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .cart h3 {
+            margin-bottom: 1rem;
+            color: #d63031;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .cart {
+                right: 1rem;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🍪 Sweet Palate</div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="cart-btn" onclick="toggleCart()">🛒 Carrito (0)</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>¡Las Mejores Cookies Caseras!</h1>
+            <p>Frescas, crujientes y llenas de sabor. Hechas con amor todos los días.</p>
+            <a href="#productos" class="btn">Ver Productos</a>
+        </section>
+
+        <section id="productos" class="products">
+            <div class="product-card">
+                <img src="images/chocolate.jpg" alt="Cookies de Chocolate" class="product-img">
+                <div class="product-info">
+                    <h3>Cookies de Chocolate</h3>
+                    <p>Clásicas con chips de chocolate belga. ¡Irresistibles!</p>
+                    <div class="price">$3.50 c/u</div>
+                    <button class="btn" onclick="addToCart('Cookies de Chocolate', 3.50)">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/vainilla.jpg" alt="Cookies de Vainilla" class="product-img">
+                <div class="product-info">
+                    <h3>Cookies de Vainilla</h3>
+                    <p>Con esencia natural y trozos de vainilla bourbon.</p>
+                    <div class="price">$3.00 c/u</div>
+                    <button class="btn" onclick="addToCart('Cookies de Vainilla', 3.00)">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/aveces.jpg" alt="Cookies de Avena" class="product-img">
+                <div class="product-info">
+                    <h3>Cookies de Avena y Pasas</h3>
+                    <p>Saludables pero deliciosas. Perfectas para el desayuno.</p>
+                    <div class="price">$4.00 c/u</div>
+                    <button class="btn" onclick="addToCart('Cookies de Avena y Pasas', 4.00)">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/oreo.jpg" alt="Cookies Oreo" class="product-img">
+                <div class="product-info">
+                    <h3>Cookies Oreo Rellenas</h3>
+                    <p>¡La combinación perfecta! Oreo + masa casera.</p>
+                    <div class="price">$4.50 c/u</div>
+                    <button class="btn" onclick="addToCart('Cookies Oreo Rellenas', 4.50)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-nosotros" class="about">
+            <h2>Sobre Nosotros</h2>
+            <p>¡Hola! Somos una familia apasionada por la repostería. Nuestras cookies se hacen a mano con ingredientes frescos y de primera calidad. <strong>Entregas en toda la ciudad en menos de 2 horas.</strong></p>
+            <p>¡Probá la diferencia del sabor casero!</p>
+        </section>
+
+        <section id="contacto" class="contact">
+            <h2>¡Hacé tu Pedido Hoy!</h2>
+            <form id="orderForm">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="tel" placeholder="Tu Teléfono (WhatsApp)" required>
+                <input type="email" placeholder="Tu Email (opcional)">
+                <textarea placeholder="Tu pedido especial o comentarios" rows="4"></textarea>
+                <select>
+                    <option>Forma de pago: Efectivo / Transferencia</option>
+                    <option>Retiro en local</option>
+                    <option>Envío a domicilio (+$2)</option>
+                </select>
+                <button type="submit" class="btn">Enviar Pedido</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="cart" class="cart">
+        <h3>🛒 Tu Carrito</h3>
+        <div id="cartItems"></div>
+        <div id="cartTotal" style="margin-top: 1rem; font-weight: bold; font-size: 1.2rem;"></div>
+        <button class="btn" onclick="clearCart()" style="margin-top: 1rem; width: 100%;">Vaciar Carrito</button>
+        <button class="btn" onclick="checkout()" style="margin-top: 0.5rem; width: 100%; background: #e17055;">Finalizar Compra</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+            alert(`${name} agregado al carrito!`);
+        }
+
+        function updateCart() {
+            const cartEl = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotal');
+            const cartBtn = document.querySelector('.cart-btn');
+            
+            cartEl.innerHTML = cart.map((item, index) => 
+                `<div class="cart-item">
+                    <span>${item.name}</span>
+                    <span>$${item.price}</span>
+                    <button onclick="removeFromCart(${index})" style="background: #e17055; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 5px; cursor: pointer;">Quitar</button>
+                </div>`
+            ).join('');
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalEl.textContent = `Total: $${total.toFixed(2)}`;
+            cartBtn.textContent = `🛒 Carrito (${cart.length})`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function toggleCart() {
+            const cartEl = document.getElementById('cart');
+            cartEl.style.display = cartEl.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío!');
+                return;
+            }
+            alert('¡Gracias por tu pedido! Te contactaremos por WhatsApp en minutos. 😊');
+            clearCart();
+            toggleCart();
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Pedido enviado! Te escribimos pronto por WhatsApp. 🍪');
+            this.reset();
+        });
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
